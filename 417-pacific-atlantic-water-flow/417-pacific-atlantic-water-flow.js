@@ -6,37 +6,36 @@ var pacificAtlantic = function(heights) {
     let rows = heights.length;
     let cols = heights[0].length;
     function dfs(node, result = [], visited = []){
-      result.push(node)
+      let entry = createEntry(node)
+      if (result.includes(entry)) return result
+      result.push(entry)
       let [r,c] = node;
-      if (visited.includes(createEntry(node))) return result;
-      visited.push(createEntry(node))
-     
-      if (r + 1 < rows && heights[r+1][c] >= heights[r][c]) dfs([r+1,c], result, visited)
-      if (r-1 >= 0 && heights[r-1][c] >= heights[r][c]) dfs([r-1, c], result, visited)
-      if (c+1 < cols && heights[r][c+1] >= heights[r][c]) dfs([r, c+1], result, visited)
-      if (c-1 >= 0 && heights[r][c-1] >= heights[r][c]) dfs([r, c-1], result, visited)
+      if (r + 1 < rows && heights[r+1][c] >= heights[r][c]) dfs([r+1,c], result)
+      if (r-1 >= 0 && heights[r-1][c] >= heights[r][c]) dfs([r-1, c], result)
+      if (c+1 < cols && heights[r][c+1] >= heights[r][c]) dfs([r, c+1], result)
+      if (c-1 >= 0 && heights[r][c-1] >= heights[r][c]) dfs([r, c-1], result)
       return result
     }
-    let final = []
-    let pacific = []
-    let atlantic = []
+    let pacific = new Set()
+    let atlantic = new Set()
     for (let r = 0; r < rows; r++){
-      pacific = [...pacific, ...dfs([r,0])]
-      atlantic = [...atlantic, ...dfs([r,cols-1])]
+      for (let e of dfs([r,0])){
+        pacific.add(e)
+      }
+      for (let e of dfs([r, cols-1])){
+        atlantic.add(e)
+      }
     }
     for (let c = 0; c < cols; c++){
-      pacific = [...pacific, ...dfs([0,c])]
-      atlantic = [...atlantic, ...dfs([rows-1,c])]
+      for (let e of dfs([0,c])) {
+        pacific.add(e)
+      }
+      for (let e of dfs([rows-1, c])){
+        atlantic.add(e)
+      }
     }
-  let common = pacific
-                  .filter(i => atlantic
-                          .some(x => x[0] == i[0] && x[1] == i[1]))
-  console.log(common)
-  return [...new Set(common
-    .map(i => createEntry(i)))]
-    .map(i => i
-         .split(",")
-         .map(i => Number(i)))
+  let common = [...pacific].filter(i => atlantic.has(i)).map(i => i.split(",").map(i => Number(i)))
+  return common
 };
   
 function createEntry (node) {
