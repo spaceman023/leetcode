@@ -5,7 +5,7 @@
 var pacificAtlantic = function(heights) {
     let rows = heights.length;
     let cols = heights[0].length;
-    function dfs(node, result = [], visited = []){
+    function dfs(node, result = []){
       let entry = createEntry(node)
       if (result.includes(entry)) return result
       result.push(entry)
