@@ -38,7 +38,6 @@ var pacificAtlantic = function(heights) {
   return common
 };
   
-function createEntry (node) {
-  let [r,c] = node;
+function createEntry ([r,c]) {
   return `${r},${c}`
 }
