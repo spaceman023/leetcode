@@ -1,7 +1,6 @@
 const findPaths = (rows, cols, moves, x, y) => {
   const M = 1000000000 + 7
   let dp = new Array(rows).fill(0).map(i => new Array(cols).fill(0))
-  console.log(dp)
   dp[x][y] = 1;
   let count = 0;
   for (let m = 1; m <= moves; m++) {
