@@ -17,11 +17,8 @@ func lengthOfLongestSubstring(s string) int {
       for j:=i-len(current); j < i; j++ {
         if s[j] == s[i] {
           current = s[j+1:i+1]
-          fmt.Println(current)
         }
       }
-     
-      
 		} else {
 			current = current + string(s[i])
 		}
