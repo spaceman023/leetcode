@@ -15,5 +15,4 @@ var numIdenticalPairs = function(nums) {
       }
     })
     return pairs
-    
 };
