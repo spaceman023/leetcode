@@ -18,9 +18,9 @@ var deleteDuplicates = function(head) {
       if (node.next.val == node.val){
         node.next = node.next.next
         continue
+      } else {
+        node = node.next
       }
-      node = node.next
-      
     }
     return head
 };
