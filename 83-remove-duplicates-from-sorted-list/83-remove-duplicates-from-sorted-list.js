@@ -17,9 +17,10 @@ var deleteDuplicates = function(head) {
     while (node.next){
       if (node.next.val == node.val){
         node.next = node.next.next
-      } else {
-        node = node.next
+        continue
       }
+      node = node.next
+      
     }
     return head
 };
