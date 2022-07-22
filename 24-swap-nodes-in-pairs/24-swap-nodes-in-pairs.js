@@ -11,18 +11,12 @@
  */
 var swapPairs = function(head) {
     //console.log(head.val)
-    if (!head){
-        return null
+    if (!head || !head.next){
+        return head
     } else {
-        if (head.next){
            let third = head.next.next
            let newhead = head.next
            newhead.next = head
            head.next = swapPairs(third)
            return newhead
-        } else {
-            return head
-    }
-}
-return head
-}
+    }}
