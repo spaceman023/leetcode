@@ -10,7 +10,7 @@ public:
       int mid = low + (high - low) / 2;
       if (!isBadVersion(mid)) {
         low = mid + 1;
-      } else if (isBadVersion(mid)) {
+      } else {
         high = mid - 1;
       }
     }
