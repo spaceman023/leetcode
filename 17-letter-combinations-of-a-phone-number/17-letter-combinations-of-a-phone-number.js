@@ -22,7 +22,7 @@ var letterCombinations = function(digits) {
             for (let c of dic[d]){
                 res.push(o+c)
             }
-            output = res
+        output = res
         }
 
     }
