@@ -16,15 +16,17 @@ var mergeTrees = function(root1, root2) {
         if (!root1 && !root2){
             return null
         }
-        let newRoot = new TreeNode()
-        if (root1 && root2){
-            newRoot.val = root1.val + root2.val
-        } else {
-            newRoot.val = root1?.val || 0 + root2?.val || 0
+        if (!root1){
+            root1 = new TreeNode()
         }
-        newRoot.right = dfs(root1?.right, root2?.right)
-        newRoot.left = dfs(root1?.left, root2?.left)
-        return newRoot;
+        if (root1 && root2){
+            root1.val = root1.val + root2.val
+        } else {
+            root1.val = root1?.val || 0 + root2?.val || 0
+        }
+        root1.right = dfs(root1?.right, root2?.right)
+        root1.left = dfs(root1?.left, root2?.left)
+        return root1;
     }
     return dfs(root1, root2)
 };
