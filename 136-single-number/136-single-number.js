@@ -1,11 +1,1 @@
-/**
- * @param {number[]} nums
- * @return {number}
- */
-var singleNumber = function(nums) {
-    let res = 0;
-    for (n of nums){
-        res = res ^ n
-    }
-    return res
-};
+const singleNumber = (nums) => nums.reduce((a,b)=>a^b,0)
