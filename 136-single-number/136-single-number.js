@@ -1,1 +1,1 @@
-const singleNumber = (nums) => nums.reduce((a,b)=>a^b,0)
+const singleNumber=(nums)=>nums.reduce((a,b)=>a^b,0)
