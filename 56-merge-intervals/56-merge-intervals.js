@@ -6,18 +6,13 @@ var merge = function(intervals) {
     let ret = []
     let parr = null
     intervals.sort((a, b) => a[0] - b[0]);
-    console.log(intervals)
     for (let i = 0; i < intervals.length; i++){
         let [a,b] = intervals[i];
-        console.log(intervals[i], parr)
         if (!parr){
             let c, d
             if (i < intervals.length-1) {
                 [c,d] = intervals[i+1];
             } else {
- 
-                console.log("here")
-                console.log(ret, intervals[i])
                 return [...ret, intervals[i]]
             }
             if (c > b){
