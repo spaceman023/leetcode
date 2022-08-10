@@ -6,9 +6,7 @@
  *     Right *TreeNode
  * }
  */
-import (
-    "math"
-)
+
 func sortedArrayToBST(nums []int) *TreeNode {
     return doWork(nums)
 }
