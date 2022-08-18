@@ -13,9 +13,9 @@ var findMaxAverage = function(nums, k) {
         for (let j = i+1; j < i+k; j++){
             s+=nums[j]
         }
-        if (s/k > max){
-            max = s/k
+        if (s > max){
+            max = s
         }
     }
-    return max
+    return max/k
 };
