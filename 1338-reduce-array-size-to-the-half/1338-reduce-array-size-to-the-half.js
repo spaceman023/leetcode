@@ -15,7 +15,6 @@ var minSetSize = function(arr) {
     let length = arr.length
     let goal = arr.length/2
     let count = 0
-    console.log(steps)
     while (length > goal){
         count++
         length -= steps[count-1][1]
